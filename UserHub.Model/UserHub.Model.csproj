@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Entities\Enums.cs" />
     <Compile Include="Entities\Suggestion.cs" />
+    <Compile Include="Entities\Tenancy.cs" />
     <Compile Include="Entities\Vote.cs" />
     <Compile Include="Migrations\201501192313252_Initial.cs" />
     <Compile Include="Migrations\201501192313252_Initial.Designer.cs">
@@ -63,7 +64,16 @@
     <Compile Include="Migrations\201501200050294_FirstStuff.Designer.cs">
       <DependentUpon>201501200050294_FirstStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501210156136_AddingTenancy.cs" />
+    <Compile Include="Migrations\201501210156136_AddingTenancy.Designer.cs">
+      <DependentUpon>201501210156136_AddingTenancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.cs" />
+    <Compile Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.Designer.cs">
+      <DependentUpon>201501210212002_AddingVotesAndSuggestionsToATenancy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Seed\SeedHelper.cs" />
     <Compile Include="UserHubContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +90,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501200050294_FirstStuff.resx">
       <DependentUpon>201501200050294_FirstStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501210156136_AddingTenancy.resx">
+      <DependentUpon>201501210156136_AddingTenancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.resx">
+      <DependentUpon>201501210212002_AddingVotesAndSuggestionsToATenancy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

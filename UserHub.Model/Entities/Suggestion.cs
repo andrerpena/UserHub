@@ -15,6 +15,8 @@ namespace UserHub.Model.Entities
 
         public int Id { get; set; }
 
+        public Tenancy Tenancy { get; set; }
+
         public DateTimeOffset CreatedOn { get; set; }
 
         public ApplicationUser CreatedBy { get; set; }

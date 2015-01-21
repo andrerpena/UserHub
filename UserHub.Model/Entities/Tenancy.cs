@@ -8,6 +8,12 @@ namespace UserHub.Model.Entities
 {
     public class Tenancy
     {
+        public Tenancy()
+        {
+            this.Suggestions = new HashSet<Suggestion>();
+            this.Votes = new HashSet<Vote>();
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -15,5 +21,9 @@ namespace UserHub.Model.Entities
         public DateTimeOffset CreatedOn { get; set; }
 
         public ApplicationUser CreatedBy { get; set; }
+
+        public ICollection<Suggestion> Suggestions { get; set; }
+
+        public ICollection<Vote> Votes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using UserHub.Model.Entities;
 
@@ -13,20 +14,28 @@ namespace UserHub.Model
             
         }
 
+        public DbSet<Suggestion> Suggestions { get; set; }
+
+        public DbSet<Tenancy> Tenancies { get; set; }
+
+        public DbSet<Vote> Votes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Vote configuration
             modelBuilder.Entity<Vote>().HasKey(m => m.Id);
-            modelBuilder.Entity<Vote>().HasRequired(m => m.CreatedBy).WithMany(m => m.Votes);
+            modelBuilder.Entity<Vote>().HasRequired(m => m.CreatedBy).WithMany(m => m.Votes).WillCascadeOnDelete(false);
             modelBuilder.Entity<Vote>().HasOptional(m => m.Suggestion).WithMany(m => m.Votes);
+            modelBuilder.Entity<Vote>().HasRequired(m => m.Tenancy).WithMany(m => m.Votes);
 
             // Suggestion configuration
             modelBuilder.Entity<Suggestion>().HasKey(m => m.Id);
-            modelBuilder.Entity<Suggestion>().HasRequired(m => m.CreatedBy).WithMany(m => m.Suggestions);
+            modelBuilder.Entity<Suggestion>().HasRequired(m => m.CreatedBy).WithMany(m => m.Suggestions).WillCascadeOnDelete(false);
             modelBuilder.Entity<Suggestion>().Property(m => m.Title).IsRequired();
             modelBuilder.Entity<Suggestion>().Property(m => m.Description).HasColumnType("varchar(max)").IsRequired();
+            modelBuilder.Entity<Suggestion>().HasRequired(m => m.Tenancy).WithMany(m => m.Suggestions);
 
             // Tenancy configuration
             modelBuilder.Entity<Tenancy>().HasKey(m => m.Id);

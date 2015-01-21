@@ -10,6 +10,8 @@ namespace UserHub.Model.Entities
     {
         public int Id { get; set; }
 
+        public Tenancy Tenancy { get; set; }
+
         public VoteType Type { get; set; }
 
         public Suggestion Suggestion { get; set; }
