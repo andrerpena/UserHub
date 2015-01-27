@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Net.NetworkInformation;
 using Microsoft.AspNet.Identity.EntityFramework;
 using UserHub.Model.Entities;
 
@@ -20,6 +21,8 @@ namespace UserHub.Model
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<SuggestionCategory> SuggestionCategories { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -37,9 +40,14 @@ namespace UserHub.Model
             modelBuilder.Entity<Suggestion>().Property(m => m.Description).HasColumnType("varchar(max)").IsRequired();
             modelBuilder.Entity<Suggestion>().HasRequired(m => m.Tenancy).WithMany(m => m.Suggestions);
 
+            // Suggestion category configuration
+            modelBuilder.Entity<SuggestionCategory>().HasKey(m => m.Id);
+            modelBuilder.Entity<SuggestionCategory>().Property(m => m.DisplayName).IsRequired();
+            modelBuilder.Entity<SuggestionCategory>().HasRequired(m => m.Tenancy).WithMany(m => m.SuggestionCategories);
+
             // Tenancy configuration
             modelBuilder.Entity<Tenancy>().HasKey(m => m.Id);
-            modelBuilder.Entity<Tenancy>().HasRequired(m => m.CreatedBy).WithMany(m => m.Tenancies);
+            modelBuilder.Entity<Tenancy>().HasRequired(m => m.CreatedBy).WithMany(m => m.Tenancies).WillCascadeOnDelete(false);
         }
     }
 }

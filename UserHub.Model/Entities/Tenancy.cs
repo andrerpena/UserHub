@@ -12,6 +12,7 @@ namespace UserHub.Model.Entities
         {
             this.Suggestions = new HashSet<Suggestion>();
             this.Votes = new HashSet<Vote>();
+            this.SuggestionCategories = new HashSet<SuggestionCategory>();
         }
 
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace UserHub.Model.Entities
         public ICollection<Suggestion> Suggestions { get; set; }
 
         public ICollection<Vote> Votes { get; set; }
+
+        public ICollection<SuggestionCategory> SuggestionCategories { get; set; }
     }
 }

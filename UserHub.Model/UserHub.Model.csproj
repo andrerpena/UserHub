@@ -54,8 +54,11 @@
   <ItemGroup>
     <Compile Include="Entities\Enums.cs" />
     <Compile Include="Entities\Suggestion.cs" />
+    <Compile Include="Entities\SuggestionCategory.cs" />
     <Compile Include="Entities\Tenancy.cs" />
     <Compile Include="Entities\Vote.cs" />
+    <Compile Include="Helpers\RandonHelper.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Migrations\201501192313252_Initial.cs" />
     <Compile Include="Migrations\201501192313252_Initial.Designer.cs">
       <DependentUpon>201501192313252_Initial.cs</DependentUpon>
@@ -71,6 +74,10 @@
     <Compile Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.cs" />
     <Compile Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.Designer.cs">
       <DependentUpon>201501210212002_AddingVotesAndSuggestionsToATenancy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501262336022_AddingSuggestionCategory.cs" />
+    <Compile Include="Migrations\201501262336022_AddingSuggestionCategory.Designer.cs">
+      <DependentUpon>201501262336022_AddingSuggestionCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Seed\SeedHelper.cs" />
@@ -96,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501210212002_AddingVotesAndSuggestionsToATenancy.resx">
       <DependentUpon>201501210212002_AddingVotesAndSuggestionsToATenancy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501262336022_AddingSuggestionCategory.resx">
+      <DependentUpon>201501262336022_AddingSuggestionCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
